@@ -1,0 +1,17 @@
+syntax = "proto3";
+package fiscal;
+
+option go_package = "ecommerce-grpc/proto/fiscal";
+
+service FiscalService {
+  rpc EmitirNotaFiscal (EmitirNotaFiscalRequest) returns (EmitirNotaFiscalResponse);
+}
+
+message EmitirNotaFiscalRequest {
+  int64 pedido_id = 1;
+}
+
+message EmitirNotaFiscalResponse {
+  string status = 1;
+  int64 nota_fiscal_id = 2;
+}

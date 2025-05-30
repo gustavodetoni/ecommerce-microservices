@@ -1,0 +1,17 @@
+syntax = "proto3";
+package pagamentos;
+
+option go_package = "ecommerce-grpc/proto/pagamentos";
+
+service PagamentosService {
+  rpc ProcessarPagamento (ProcessarPagamentoRequest) returns (ProcessarPagamentoResponse);
+}
+
+message ProcessarPagamentoRequest {
+  int64 pedido_id = 1;
+  double valor = 2;
+}
+
+message ProcessarPagamentoResponse {
+  string status = 1; 
+}

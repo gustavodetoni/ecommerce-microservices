@@ -1,0 +1,23 @@
+syntax = "proto3";
+package pedidos;
+
+option go_package = "ecommerce-grpc/proto/pedidos";
+
+service PedidosService {
+  rpc CriarPedido (CriarPedidoRequest) returns (CriarPedidoResponse);
+}
+
+message ItemPedido {
+  int64 produto_id = 1;
+  int32 quantidade = 2;
+}
+
+message CriarPedidoRequest {
+  int64 cliente_id = 1;
+  repeated ItemPedido itens = 2;
+}
+
+message CriarPedidoResponse {
+  int64 pedido_id = 1;
+  string status = 2;
+}

@@ -1,0 +1,16 @@
+syntax = "proto3";
+package estoque;
+
+option go_package = "ecommerce-grpc/proto/estoque";
+
+service EstoqueService {
+  rpc SepararEstoque (SepararEstoqueRequest) returns (SepararEstoqueResponse);
+}
+
+message SepararEstoqueRequest {
+  int64 pedido_id = 1;
+}
+
+message SepararEstoqueResponse {
+  string status = 1; 
+}

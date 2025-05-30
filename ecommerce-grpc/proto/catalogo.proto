@@ -1,0 +1,20 @@
+syntax = "proto3";
+package catalogo;
+
+option go_package = "ecommerce-grpc/proto/catalogo";
+
+service CatalogoService {
+  rpc ListarProdutos (ListarProdutosRequest) returns (ListarProdutosResponse);
+}
+
+message ListarProdutosRequest {}
+
+message Produto {
+  int64 id = 1;
+  string nome = 2;
+  int32 estoque = 3;
+}
+
+message ListarProdutosResponse {
+  repeated Produto produtos = 1;
+}

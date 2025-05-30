@@ -1,0 +1,18 @@
+syntax = "proto3";
+package logistica;
+
+option go_package = "ecommerce-grpc/proto/logistica";
+
+service LogisticaService {
+  rpc AgendarEnvio (AgendarEnvioRequest) returns (AgendarEnvioResponse);
+}
+
+message AgendarEnvioRequest {
+  int64 pedido_id = 1;
+  int64 nota_fiscal_id = 2;
+}
+
+message AgendarEnvioResponse {
+  string status = 1;
+  string codigo_rastreamento = 2;
+}
