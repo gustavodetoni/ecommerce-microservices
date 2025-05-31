@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"log"
 	pb "ecommerce-grpc/proto/estoque"
-	pc "ecommerce-grpc/estoque/client"
+	pc "ecommerce-grpc/api-estoque/client"
 )
 
 type EstoqueHandler struct {

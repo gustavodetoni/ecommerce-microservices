@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 	pb "ecommerce-grpc/proto/fiscal"
-	pc "ecommerce-grpc/fiscal/client"
+	pc "ecommerce-grpc/api-fiscal/client"
 )
 
 type FiscalHandler struct {

@@ -8,6 +8,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 	"bytes"
 	"encoding/json"
+	"github.com/zsais/go-gin-prometheus"
 )
 
 type NovoPedido struct {
@@ -23,6 +24,9 @@ func main() {
 	db, _ := sql.Open("sqlite3", "../../database/ecommerce.db")
 	defer db.Close()
 	router := gin.Default()
+
+	p := ginprometheus.NewPrometheus("api-pedidos")
+	p.Use(router)
 
 	router.POST("/pedidos", func(c *gin.Context) {
 		var np NovoPedido

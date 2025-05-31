@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"log"
 	pb "ecommerce-grpc/proto/pagamentos"
-	pc "ecommerce-grpc/pagamentos/client"
+	pc "ecommerce-grpc/api-pagamentos/client"
 )
 
 type PagamentosHandler struct {

@@ -9,12 +9,16 @@ import (
 	"fmt"
 	"bytes"
 	"net/http"
+	"github.com/zsais/go-gin-prometheus"
 )
 
 func main() {
 	db, _ := sql.Open("sqlite3", "../../database/ecommerce.db")
 	defer db.Close()
 	router := gin.Default()
+
+	p:= ginprometheus.NewPrometheus("api-fiscal")
+	p.Use(router)
 
 	router.POST("/fiscal/emitir", func(c *gin.Context) {
 		var req struct {

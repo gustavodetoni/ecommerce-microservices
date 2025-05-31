@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"log"
 	pb "ecommerce-grpc/proto/pedidos"
-	pc "ecommerce-grpc/pedidos/client"
+	pc "ecommerce-grpc/api-pedidos/client"
 )
 
 type PedidosHandler struct {

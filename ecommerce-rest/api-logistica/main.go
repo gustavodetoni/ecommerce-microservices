@@ -5,12 +5,16 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
 	"time"
+	"github.com/zsais/go-gin-prometheus"
 )
 
 func main() {
 	db, _ := sql.Open("sqlite3", "../../database/ecommerce.db")
 	defer db.Close()
 	router := gin.Default()
+
+	p:= ginprometheus.NewPrometheus("api-logistica")
+	p.Use(router)
 
 	router.POST("/logistica/enviar", func(c *gin.Context) {
 		var req struct {

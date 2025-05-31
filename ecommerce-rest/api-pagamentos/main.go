@@ -8,6 +8,7 @@ import (
 	"encoding/json"
 	"bytes"
 	"net/http"
+	"github.com/zsais/go-gin-prometheus"
 )
 
 type PagamentoRequest struct {
@@ -19,6 +20,9 @@ func main() {
 	db, _ := sql.Open("sqlite3", "../../database/ecommerce.db")
 	defer db.Close()
 	router := gin.Default()
+
+	p := ginprometheus.NewPrometheus("api-pagamentos")
+	p.Use(router)
 
 	router.POST("/pagamentos", func(c *gin.Context) {
 		var p PagamentoRequest

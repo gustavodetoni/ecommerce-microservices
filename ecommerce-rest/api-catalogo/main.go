@@ -4,12 +4,16 @@ import (
 	"database/sql"
 	"github.com/gin-gonic/gin"
 	_ "github.com/mattn/go-sqlite3"
+	"github.com/zsais/go-gin-prometheus"
 )
 
 func main() {
 	db, _ := sql.Open("sqlite3", "../../database/ecommerce.db")
 	defer db.Close()
 	router := gin.Default()
+
+	p:= ginprometheus.NewPrometheus("api-catalogo")
+	p.Use(router)
 
 	router.GET("/catalogo", func(c *gin.Context) {
 		rows, _ := db.Query("SELECT id, nome, quantidade_estoque FROM produtos")
