@@ -1,15 +1,22 @@
 package main
 
 import (
+	"database/sql"
+	pb "ecommerce-grpc/proto/pedidos"
+	_ "github.com/mattn/go-sqlite3"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"google.golang.org/grpc"
 	"log"
 	"net"
-	"google.golang.org/grpc"
-	"database/sql"
-	_ "github.com/mattn/go-sqlite3"
-	pb "ecommerce-grpc/proto/pedidos"
+	"net/http"
 )
 
 func main() {
+	go func() {
+		http.Handle("/metrics", promhttp.Handler())
+		log.Fatal(http.ListenAndServe(":2117", nil))
+	}()
+
 	lis, err := net.Listen("tcp", ":50051")
 	if err != nil {
 		log.Fatalf("Falha ao escutar: %v", err)
